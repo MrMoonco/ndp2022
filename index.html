@@ -114,18 +114,17 @@
                 <div id="videoResolutionChooser" style="display: none;">
                     <p class="light" style="margin: 0">Choose Video Projection</p>
                     <select id="selectCustom" class="selectForm" onchange="customOrNot();">
-                        
-                            <option value="Fixed">LED Config</option>
-                            <option value="Projection">IMAG</option>
+                            <option value="LED">LED Config</option>
+                            <option value="IMAG">IMAG</option>
                     </select>
 
                     <br><br>
 
                     <!-------------------------------
-                        Options for 100%
+                        IMAG Options
                     -------------------------------->
                     <select multiple onchange="checkResolution()" id="selectResolutionProj" class="selectForm">
-                        <!-- TO DO -->
+                        <option value="IMAG">16:9</option>
                     </select>
                     
                     <!-------------------------------
@@ -233,7 +232,7 @@
                         -------------------------->
                         <!-- Pre-Parde (Warm Up) -->
                         <optgroup label="Pre-Parade (Warm Up)">
-                            <option value="LEDFRAME_WALKIN">PP1A Hosts Intro & Entry</option>
+                            <option value="PP1A">PP1A Hosts Intro & Entry</option>
                             <option value="PP1B">PP1B Theme Song Sing-Along</option>
                             <option value="PP2">PP2 Audience Rehearsal (WRAS CHORUS ONLY)</option>
                             <option value="PP3">PP3 Audience Rehearsal (FIGHT)</option>

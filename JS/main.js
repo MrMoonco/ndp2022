@@ -168,6 +168,12 @@ var resolution =
         number:28,
         width:1963,
         height:1472,
+    },
+    IMAG:
+    {
+        number:30,
+        width: 1152,
+        height: 648,
     }
 }
     
@@ -238,7 +244,7 @@ function checkLoadInSelection()
 //Check if user selected custom or not custom resolution
 function customOrNot() 
 {
-    if($("#selectCustom").val()==="Fixed" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
     {
         $("#selectResolution").show()
         $("#customResolution").hide();
@@ -263,7 +269,7 @@ function customOrNot()
         }
     }
 
-    else if($("#selectCustom").val()==="Projection")
+    else if($("#selectCustom").val()==="IMAG")
     {
         $("#selectResolution").hide()
         $("#customResolution").hide();
@@ -285,7 +291,7 @@ function customOrNot()
 //Check what resolution was selected   
 function checkResolution()
 {
-    if($("#selectCustom").val()==="Fixed" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
     {
         console.log($("#selectResolution").val())
         var resolutionArray = []
@@ -314,7 +320,7 @@ function checkResolution()
         }
     }
 
-    else if($("#selectCustom").val()==="Projection")
+    else if($("#selectCustom").val()==="IMAG")
     {
         $("#filenameChooser").show()
         $("#configurationErr").hide()
@@ -356,9 +362,10 @@ function checkFileName()
         resetCopyText();
         $("#filename").hide()
 
-        if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()!=="Projection")
+        if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()!=="IMAG")
         {
             $("#copyText").html(
+                getOption()+"_"+
                 $('#selectFileName').val()+"_"+
                 getResolution()[0]+"x"+
                 getResolution()[1]+
@@ -368,9 +375,10 @@ function checkFileName()
             )
         }
 
-        else if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()==="Projection")
+        else if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()==="IMAG")
         {
             $("#copyText").html(
+                getOption()+"_"+
                 $('#selectFileName').val()+"_"+
                 getResolution()[0]+"x"+
                 getResolution()[1]+
@@ -432,7 +440,7 @@ function getResolution()
 {
     var width = parseInt($("#width").val());
     var height= parseInt($("#height").val());
-    if($("#selectCustom").val()==="Fixed" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
     {
         width = 0
         height = getSequenceArray()[0][0].height
@@ -472,7 +480,7 @@ function getResolution()
         return [width, height]
     }
 
-    if($("#selectCustom").val()=="Projection")
+    if($("#selectCustom").val()=="IMAG")
     {
         width = resolution[$("#selectResolutionProj").val()].width
         height = resolution[$("#selectResolutionProj").val()].height
@@ -577,7 +585,7 @@ function nextPage()
             ({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Please make sure you\'ve configured the files properly',
+                text: 'Please make sure you\'ve checked all checklist items!',
             })
         }
     }
@@ -595,15 +603,23 @@ function nextPage()
             ({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Please make sure you\'ve configured the files properly',
+                text: 'Please make sure you\'ve checked all checklist items!',
             })
         }
     }
 }
 
+//what option?
+function getOption() {
+    selectElement = document.querySelector('#selectCustom');
+    output = selectElement.value;
+    return(output)
+}
+
 //refreshes page after new render btn is clicked
 function refresh()
 {
+
     location.reload();
 }
 
@@ -611,6 +627,7 @@ function refresh()
 function generateCopyText()
 {
     $("#copyText").html(    
+        getOption()+"_"+
         $('#filename').val().toUpperCase()+"_"+
         getResolution()[0]+"x"+
         getResolution()[1]+
@@ -618,6 +635,7 @@ function generateCopyText()
         getNearestTimeStamp()
     )
 }
+
 
 //Reset copytext to allow new text to be generated and copied
 function resetCopyText()
@@ -637,7 +655,7 @@ function copyTextFunc()
     document.execCommand("copy");
     $('#copied').hide();
     $('#copied').fadeIn();
-    $('#copied').html('Copied!</p>')
+    $('#copied').html('Copied!')
     $('#copy').hide();
 }
     
