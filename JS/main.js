@@ -637,7 +637,7 @@ function copyTextFunc()
     document.execCommand("copy");
     $('#copied').hide();
     $('#copied').fadeIn();
-    $('#copied').html('Copied!&#x1F44D;</p>')
+    $('#copied').html('Copied!</p>')
     $('#copy').hide();
 }
     
