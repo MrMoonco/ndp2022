@@ -1,2 +1,2 @@
 # ndp2022
-ndp2022.github.io
+https://mrmoonco.github.io/ndp2022/
