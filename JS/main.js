@@ -75,7 +75,7 @@ var resolution =
     Screen3_75:
     {
         number:3,
-        width:2208,
+        width:1963,
         height:1104,
     },
     Screen4_75:
