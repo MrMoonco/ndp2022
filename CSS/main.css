@@ -119,4 +119,10 @@ ul li.checked::before {
     height: 15px;
     width: 7px;
 }
-
+optgroup[label] {
+	color:#ccc;
+	}
+option
+{
+color: black;
+}
