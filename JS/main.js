@@ -92,7 +92,7 @@ var resolution =
     {
         number:30,
         width: 1152,
-        height: 640,
+        height: 648,
     }
 }
     
