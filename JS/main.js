@@ -3,172 +3,91 @@
  ***************************/
 var resolution = 
 {
-    //50% Zoom
-    Screen1_50: 
-    {
-        number:29,
-        width:2944,
-        height:736,
-    },
-    Screen2_50:
-    {
-        number:30,
-        width: 736,
-        height:736,
-    },
-    Screen3_50:
-    {
-        number:31,
-        width:1472,
-        height:736,
-    },
-    Screen4_50:
-    {
-        number:32,
-        width:736,
-        height:736,
-    },
-    Screen5_50:
-    {
-        number:33,
-        width:1472,
-        height:736,
-    },
-    Screen6_50:
-    {
-        number:34,
-        width:1472,
-        height:736,
-    },
-    Screen7_50:
-    {
-        number:35,
-        width:980,
-        height:735,
-    },
-    Screen8_75:
-    {
-        number:36,
-        width:980,
-        height:735,
-    },
-    Screen9_50:
-    {
-        number:37,
-        width:980,
-        height:735,
-    },
-    
-    //75% Zoom
-    Screen1_75: 
-    {
-        number:1,
-        width:4416,
-        height:1104,
-    },
-    Screen2_75:
-    {
-        number:2,
-        width: 1104,
-        height:1104,
-    },
-    Screen3_75:
-    {
-        number:3,
-        width:1963,
-        height:1104,
-    },
-    Screen4_75:
-    {
-        number:4,
-        width:1104,
-        height:1104,
-    },
-    Screen5_75:
-    {
-        number:5,
-        width:2208,
-        height:1104,
-    },
-    Screen6_75:
-    {
-        number:8,
-        width:2208,
-        height:1104,
-    },
-    Screen7_75:
-    {
-        number:9,
-        width:1472,
-        height:1104,
-    },
-    Screen8_75:
-    {
-        number:10,
-        width:1472,
-        height:1104,
-    },
-    Screen9_75:
-    {
-        number:10,
-        width:1472,
-        height:1104,
-    },
-    // 100% Zoom
+    //100% 
     Screen1_100:
     {
-        number:12,
+        number:1,
         width:5888,
         height:1472,
     },
     Screen2_100:
     {
-        number:14,
+        number:2,
         width:1472,
         height:1472,
     },
     Screen3_100:
     {
-        number:16,
+        number:3,
         width:2944,
-        height:1472,
-    },
-    Screen4_100:
-    {
-        number:18,
-        width:1472,
-        height:1472,
-    },
-    Screen5_100:
-    {
-        number:20,
-        width:2944,
-        height:1472,
-    },
-    Screen6_100:
-    {
-        number:22,
-        width:2944,
-        height:1472,
-    },
-    Screen7_100:
-    {
-        number:24,
-        width:1963,
         height:1472,
     },
     Screen8_100:
     {
-        number:26,
+        number:5,
         width:1963,
         height:1472,
     },
-    Screen9_100:
+
+    //75%
+    Screen1_75: 
     {
-        number:28,
-        width:1963,
-        height:1472,
+        number:6,
+        width:4416,
+        height:1104,
     },
+    Screen2_75:
+    {
+        number:7,
+        width: 1104,
+        height:1104,
+    },
+    Screen3_75:
+    {
+        number:8,
+        width:1963,
+        height:1104,
+    },
+    Screen5_75:
+    {
+        number:9,
+        width:2208,
+        height:1104,
+    },
+    Screen7_75:
+    {
+        number:10,
+        width:1472,
+        height:1104,
+    },
+    
+    //50% 
+    Screen1_50: 
+    {
+        number:11,
+        width:2944,
+        height:736,
+    },
+    Screen2_50:
+    {
+        number:12,
+        width: 736,
+        height:736,
+    },
+    Screen3_50:
+    {
+        number:13,
+        width:1472,
+        height:736,
+    },
+    Screen7_50:
+    {
+        number:15,
+        width:980,
+        height:735,
+    },
+    
+    //IMAG
     IMAG:
     {
         number:30,
@@ -371,7 +290,7 @@ function checkFileName()
                 getResolution()[1]+
                 '_v'+
                 getNearestTimeStamp()+
-                $("#selectExtension").val()
+                ".mov"     
             )
         }
 
@@ -384,7 +303,7 @@ function checkFileName()
                 getResolution()[1]+
                 '_v'+
                 getNearestTimeStamp()+
-                $("#selectExtension").val()
+                ".mov"
             )
         }
     

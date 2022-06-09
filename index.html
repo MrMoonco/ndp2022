@@ -59,7 +59,7 @@
                     <p class="bold">Checklist</p>
                     <ul id="showCompanyCheck" class="parent1">
                         <li>File Format: .mov</li>
-                        <li>codec: dxv2</li>
+                        <li>Codec: Apple ProRes 422 / Apple ProRes 4444 with Alpha</li>
                         <li>FPS: 25</li>
                         <li>Your resolution is correct (Double check it matches your respective screen)</li>
                     </ul>
@@ -71,7 +71,7 @@
                     <p class="bold">Checklist</p>
                     <ul id="hexagonCheck" class="parent2">
                         <li>File Format: .mov</li>
-                        <li>codec: hap</li>
+                        <li>Codec: HAP</li>
                         <li>FPS: 25</li>
                         <li>Your resolution is correct (double check your instructions)</li>
                     </ul>
@@ -101,6 +101,7 @@
                      <option value="Auto">Automatically Choose The Nearest Load-In Time</option>
                      <option value="1000">1000hrs</option>
                      <option value="1200">1200hrs</option>
+                     <option value="1400">1400hrs</option>
                      <option value="1500">1500hrs</option>
                      <option value="1700">1700hrs</option>
                      <option value="1900">1900hrs</option>
@@ -131,62 +132,41 @@
                         LED Options 
                     -------------------------------->
                     <select multiple onchange="checkResolution()" id="selectResolution" class="selectForm" style="height:400px;overflow:scroll;">
-                        <optgroup label="LED CONFIG 01 (100%)">
-                            <option value="Screen1_100">36:9</option>
+                        <!--
+                            100%
+                        -->
+                        <optgroup label="LED CONFIG (100%)">
+                            <option value="Screen1_100">36:9 (5888x1472)</option>
+                            <option value="Screen3_100">18:9 (2944x1472)</option>
+                            <option value="Screen2_100">9:9 (1472x1472)</option>
+                            <option value="Screen8_100">4:3 (1963x1472)</option>
                         </optgroup>
-                        <optgroup label="LED CONFIG 02 (100%)">
-                            <option value="Screen2_100">9:9 LEFT</option>
-                            <option value="Screen3_100">18:9</option>
-                            <option value="Screen4_100">9:9 RIGHT</option>
+
+                        <!--
+                            75% 
+                        -->
+                        <optgroup label="LED CONFIG (75%)">
+                            <option value="Screen1_75">36:9 (4416x1104)</option>
+                            <option value="Screen5_75">18:9 (2208x1104)</option>
+                            <option value="Screen3_75">16:9 (1963x1104)</option>
+                            <option value="Screen2_75">9:9 (1104x1104)</option>
+                            <option value="Screen7_75">4:3 (1472x1104)</option>
                         </optgroup>
-                        <optgroup label="LED CONFIG 03 (100%)">
-                            <option value="Screen5_100">18:9 LEFT</option>
-                            <option value="Screen6_100">18:9 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 04 (100%)">
-                            <option value="Screen7_100">4:3 LEFT</option>
-                            <option value="Screen8_100">4:3</option>
-                            <option value="Screen9_100">4:3 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 01 (75%)">
-                            <option value="Screen1_75">36:9</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 02 (75%)">
-                            <option value="Screen2_75">9:9 LEFT</option>
-                            <option value="Screen3_75">16:9</option>
-                            <option value="Screen4_75">9:9 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 03 (75%)">
-                            <option value="Screen5_75">18:9 LEFT</option>
-                            <option value="Screen6_75">18:9 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 04 (75%)">
-                            <option value="Screen7_75">4:3 LEFT</option>
-                            <option value="Screen8_75">4:3 CENTRE</option>
-                            <option value="Screen9_75">4:3 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 01 (50%)">
-                            <option value="Screen1_50">36:9</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 02 (50%)">
-                            <option value="Screen2_50">9:9 LEFT</option>
-                            <option value="Screen3_50">18:9</option>
-                            <option value="Screen4_50">9:9 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 03 (50%)">
-                            <option value="Screen5_50">18:9 LEFT</option>
-                            <option value="Screen6_50">18:9 RIGHT</option>
-                        </optgroup>
-                        <optgroup label="LED CONFIG 04 (50%)">
-                            <option value="Screen7_50">4:3 LEFT</option>
-                            <option value="Screen8_50">4:3 CENTRE</option>
-                            <option value="Screen9_50">4:3 RIGHT</option>
-                        </optgroup>  
+
+                        <!--
+                            50%
+                        -->
+                        <optgroup label="LED CONFIG (50%)">
+                            <option value="Screen1_50">36:9 (2944x736)</option>
+                            <option value="Screen3_50">18:9 (1472x736)</option>
+                            <option value="Screen2_50">9:9 (736x736)</option>
+                            <option value="Screen7_50">4:3 (980x735)</option>
+                        </optgroup> 
                     </select>
                     
               
                     
-
+                    <!-- Screen Config Error Message -->
                     <p style="color: red; margin: 0;" class="light" id="configurationErr"> Screen Configuration Is Invalid </p>
                     
                     <div id="customResolution" style="text-align: center;display: none;">
@@ -196,122 +176,73 @@
                     </div>
                 </div>
 
+                <!-- Break -->
                 <br><br>
                 
                 <!------------------------------------- 
                     Optional File Extension Options 
                 -------------------------------------->
                 <div id="filenameChooser" style="display: none;">
-                    <p class="light" style="margin: 0;">(OPTIONAL) File Extension:</p>
-                    <select onchange="checkFileName()" id="selectExtension" class="selectForm">
-                        <option value="">Optional Additional File Extensions</option>
-                        <optgroup label="UN-ENCODED">
-                            <option value="_unencoded">PRODUCTION HOUSE</option>
-                            <option value="_SUB_unencoded">SUBTITLES</option>
-                            <option value="_LTLEFT_unencoded">LOWER THIRDS LEFT</option>
-                            <option value="_LTRIGHT_unencoded">LOWER THIRDS RIGHT</option>
-                            <option value="_LT_unencoded">LOWER THIRDS</option>
-                            <option value="_FILMTITLE_unencoded">FILM TITLES</option>
-                        </optgroup>
-                        <optgroup label="ENCODED">
-                            <option value="">PRODUCTION HOUSE</option>
-                            <option value="_SUBHAP">SUBTITLES</option>
-                            <option value="_LTLEFTHAP">LOWER THIRDS LEFT</option>
-                            <option value="_LTRIGHTHAP">LOWER THIRDS RIGHT</option>
-                            <option value="_LTHAP">LOWER THIRDS</option>
-                            <option value="_FILMTITLE">FILM TITLES</option>
-                        </optgroup>
-                    </select>
                     <p class="light" style="margin: 0;">File Name:</p>
                     <select onchange="checkFileName()" id="selectFileName" class="selectForm">
                         <option value="NIL">Choose an option</option>
-                        <option value="Custom">Custom Filename</option>
+         
+                        <optgroup label="1. SEGMENT: PRE-PARADE (PP)">
+                            <option value="PP_WALKINFRAME">WALK-IN FRAME</option>
+                            <option value="PP_PPFRAME">PRE-PARADE FRAME</option>
+                            <option value="PP_REDLIONSJUMP">RED LIONS</option>
+                            <option value="PP_GOLIVECOUNTDOWN">LIVE COUNTDOWN</option>
+                            <option value="PP_KYNDPSTITLE">KYNDPS TITLE</option>
+                            <option value="PP_KYNDPSGOODTRY">KYNDPS GOOD TRY</option>
+                            <option value="PP_KYNDPSWELLDONE">KYNDPS WELL DONE</option>
+                        </optgroup>
                         
-                        <!------------------------- 
-                                File Name           
-                        -------------------------->
-                        <!-- Pre-Parde (Warm Up) -->
-                        <optgroup label="Pre-Parade (Warm Up)">
-                            <option value="PP1A">PP1A Hosts Intro & Entry</option>
-                            <option value="PP1B">PP1B Theme Song Sing-Along</option>
-                            <option value="PP2">PP2 Audience Rehearsal (WRAS CHORUS ONLY)</option>
-                            <option value="PP3">PP3 Audience Rehearsal (FIGHT)</option>
-                            <option value="PP4">PP4 Marina Wave</option>
-                            <option value="PP5">PP5 Community Songs Sing-Along</option>
+                        <optgroup label="2. SEGMENT: TDD1 (TDD1)">
+                            <option value="TDD1_AH2nL2">AH2&L2</option>
+                            <option value="TDD1_ARV">ARV</option>
+                            <option value="TDD1_HIMARS">HIMARS</option>
+                            <option value="TDD1_HUNTER">HUNTER</option>
+                            <option value="TDD1_LSV">LSV</option>
+                            <option value="TDD1_NDU">NDU</option>
+                            <option value="TDD1_TERREX">TERREX</option>
+                            <option value="TDD1_WRV">WRV</option>
+                            <option value="TDD1_ADVISORY">ADVISORY</option>
                         </optgroup>
 
-                        <!-- Pre-Parde (Go Live) -->
-                        <optgroup label="Pre-Parade (Go Live)">
-                            <option value="PP6">PP6 Stronger Together (TKSS+RP+Pros)</option>
-                            <option value="PP7">PP7 VIP Group 1 Entry (MPs)</option>
-                            <option value="PP8">PP8 National Songs Sing-Along</option>
-                            <option value="PP9">PP9 VIP Group 2 Entry</option>
-                            <option value="PP10">PP10 PM Entry with motorcade</option>
-                            <option value="PP11">PP11 Video: Overseas Singaporeans</option>
-                            <option value="PP12">PP12 Red Lions Display</option>
+                        <optgroup label="3. SEGMENT: P&C (PnC)">
+                            <option value="PnC_PnCFRAME">P&C FRAME</option>
+                            <option value="PnC_HOLDINGLOGO">HOLDING LOGO</option>
+                            <option value="PnC_WAVYFLAG">WAVY FLAG</option>
+                            <option value="PnC_NORMALFLAG">NORMAL FLAG</option>
                         </optgroup>
 
-                        <!-- TDD Part 1 -->
-                        <optgroup label="TDD Part 1">
-                            <!------------ 
-                                
-                                TO DO 
-                            
-                            -------------->
+                        <optgroup label="4. SEGMENT: TDD2 (TDD2)">
+                            <option value="TDD2_ADVISORY">ADVISORY</option>
                         </optgroup>
 
-                        <!-- P&C -->
-                        <optgroup label="P&C">
-                            <!------------ 
-                                
-                                TO DO 
-                            
-                            -------------->
+                        <optgroup label="6. SEGMENT: CHAPTER 2 (CHPT2)">
+                            <option value="CHPT2_SHOWFILM1">SHOWFILM 1</option>
+                            <option value="CHPT2_SHOWFILM1SUBS">SHOWFILM 1 SUBTITLES</option>
                         </optgroup>
 
-                        <!-- TDD Part 2 -->
-                        <optgroup label="TDD Part 2">
-                            <option value="Video1A">Video 1A Hi-Speed Drone Video</option>
-                            <option value="Perf1A">Perf 1A Party CSTF</option>
-                            <option value="Perf1B">Perf 1B Work Transition</option>
-                            <option value="Perf1C">Perf 1C All That Bass</option>
-                            <option value="Video1C">Video 1C (Hung Up)</option>
-                            <option value="Video1D">Video 1D HDB TikTok Girls</option>
-                            <option value="Video1E">Video 1E Satellite Convergence</option>
-                            <option value="Video1D">Video 1D Boombayah Continues</option>
+                        <optgroup label="7. SEGMENT: CHAPTER 3 (CHPT3)">
+                            <option value="CHPT3_SHOWFILM2">SHOWFILM 2</option>
+                            <option value="CHPT3_SHOWFILM1SUBS">SHOWFILM 1 SUBTITLES</option>
                         </optgroup>
 
-                        <!-- Chapter 1 (HONUS) -->
-                        <optgroup label="Chpt 1 (HONUS)">
-                            <option value="Ep1">Episode 1: Life Takes a Turn</option>
-                            <option value="Perf2A">Perf 2A Lost</option>
-                            <option value="Perf2B">Perf 2A A Guiding Light</option>
-                            <option value="Perf2C">Perf 2C Lights in the Dark</option>
+                        <optgroup label="8. SEGMENT: CHAPTER 4 (CHPT4)">
+                            <option value="CHPT4_SHOWFILM3">SHOWFILM 3 </option>
+                            <option value="CHPT4_SHOWFILM3SUBS">SHOWFILM 3 SUBTITLES</option>
                         </optgroup>
 
-                        <!-- Chapter 2 (Poly + Pro) -->
-                        <optgroup label="Chpt 2 (Poly + Pro)">
-                            <option value="Ep2">Episode 2: Lights in the Day</option>
-                            <option value="Perf3A1">Perf 3A1 We are a Symphony</option>
-                            <option value="Perf3A2">Perf 3A2 Family Tribute</option>
-                            <option value="Perf3B">Perf 3B Beauty World</option>
-                            <option value="Perf3C">Perf 3C Getaran Jiwan</option>
-                            <option value="Perf3D">Perf 3D Singai Naadu</option>
-                            <option value="Perf3E">Perf 3E Getai</option>
+                        <optgroup label="9. SEGMENT: CHAPTER 5 (CHPT5)">
+                            <option value="CHPT5_SHOWFILM4">SHOWFILM 4</option>
+                            <option value="CHPT5_SHOWFILM4SUBS">SHOWFILM 4 SUBTITLES</option>
+                            <option value="CHPT5_ROLLINGCREDITS">ROLLING CREDITS</option>
+                            <option value="CHPT5_WAVYFLAG">WAVY FLAG</option>
+                            <option value="CHPT5_NORMALFLAG">NORMAL FLAG</option>
                         </optgroup>
 
-                        <!-- Chapter 3 (PA-MSF) -->
-                        <optgroup label="Chpt 3 (PA-MSF)">
-                            <option value="Ep3">Episode 3: Pulling Together</option>
-                        </optgroup>
-
-                        <!-- Chapter 4 (SOKA) -->
-                        <optgroup label="Chpt 4 (SOKA)">
-                            <option value="Ep4">Episode 4: Stepping Up, Stepping Out</option>
-
-                        <!-- Chapter 5 (MOE) -->
-                        <optgroup label="Chpt 5 (MOE)">
-                        </optgroup>
                     </select>
 
                     <!-- Output for File Name -->
