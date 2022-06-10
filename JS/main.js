@@ -289,9 +289,7 @@ function checkFileName()
                 getResolution()[0]+"x"+
                 getResolution()[1]+
                 '_v'+
-                getNearestTimeStamp()+
-                ".mov"     
-            )
+                getNearestTimeStamp()            )
         }
 
         else if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()==="IMAG")
@@ -302,8 +300,7 @@ function checkFileName()
                 getResolution()[0]+"x"+
                 getResolution()[1]+
                 '_v'+
-                getNearestTimeStamp()+
-                ".mov"
+                getNearestTimeStamp()
             )
         }
     
