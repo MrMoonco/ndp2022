@@ -108,16 +108,7 @@ window.onload = function ()
             ev.target.classList.toggle('checked');
         }
     }, false);
-    
-    //Checklist for Hexagon Company
-    var list2 = document.getElementById('hexagonCheck');
-    list2.addEventListener('click', function(ev) 
-    {
-        if (ev.target.tagName === 'LI') 
-        {
-            ev.target.classList.toggle('checked');
-        }   
-    }, false);
+
 }
 
 //Check what company user selected
@@ -163,7 +154,7 @@ function checkLoadInSelection()
 //Check if user selected custom or not custom resolution
 function customOrNot() 
 {
-    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED")
     {
         $("#selectResolution").show()
         $("#customResolution").hide();
@@ -195,13 +186,6 @@ function customOrNot()
         $("#selectResolutionProj").show();
     }
 
-    else if($("#selectCustom").val()==="MediaCorp")
-    {
-        $("#selectResolution").hide()
-        $("#customResolution").hide();
-        $("#selectResolutionProj").hide();
-        $("#filenameChooser").show();
-    }
 
     checkFileName();
 
@@ -210,7 +194,7 @@ function customOrNot()
 //Check what resolution was selected   
 function checkResolution()
 {
-    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED")
     {
         console.log($("#selectResolution").val())
         var resolutionArray = []
@@ -270,11 +254,22 @@ function getSequenceArray()
 //Checks what program user selected E.g. PP1, PP2, etc
 function checkFileName()
 {
-    if($("#selectFileName").val()==="Custom")
+    if($("#selectCustom").val()==="IMAG")
     {
-        $("#filename").show()
         resetCopyText();
-    }
+        $("#filename").hide()
+
+        
+        $("#copyText").html(
+                getOption()+"_"+
+                $('#selectFileName').val()+"_"+
+                getResolution()[0]+"x"+
+                getResolution()[1]+
+                '_v'+
+                customTimeStamp()            )
+        }
+
+    
 
     else
     {
@@ -289,20 +284,10 @@ function checkFileName()
                 getResolution()[0]+"x"+
                 getResolution()[1]+
                 '_v'+
-                getNearestTimeStamp()            )
+                customTimeStamp()            )
         }
 
-        else if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()==="IMAG")
-        {
-            $("#copyText").html(
-                getOption()+"_"+
-                $('#selectFileName').val()+"_"+
-                getResolution()[0]+"x"+
-                getResolution()[1]+
-                '_v'+
-                getNearestTimeStamp()
-            )
-        }
+        
     
     }
 }
@@ -315,8 +300,16 @@ function getNearestTimeStamp()
     if(parseInt(moment(new Date()).format('HHmm')) > closestLoadIn($("#selectLoadIn").val()) )
     {
         var new_date = moment(new Date()).add(1, 'days');
-        YYYYMMDD = moment(new_date).format("YYYYMMDD")
+        YYYYMMDD = moment(selectedDate).format("YYYYMMDD")
     }
+
+    return(YYYYMMDD + closestLoadIn($("#selectLoadIn").val()).toString())
+}
+
+function customTimeStamp()
+{
+    var YYYYMMDD = moment(new Date()).format("YYYYMMDD");
+    YYYYMMDD = document.getElementById("dateSelect").value.replace(/-/g, '');
 
     return(YYYYMMDD + closestLoadIn($("#selectLoadIn").val()).toString())
 }
@@ -327,22 +320,12 @@ function closestLoadIn(data)
     var LoadIns = [1000, 1200, 1500, 1700, 1900]
     var closestIndex = 0;
 
-    if(data==="Auto")
+    
+    if(data ==="CurrentTime")
     {
         var currentTime = parseInt(moment(new Date()).format("HHmm"))
-        
-        for(var i =LoadIns.length-1; i>0; i--)
-        {
-            if(currentTime < LoadIns[i]){
-                closestIndex = i
-            }
-        }
-        return LoadIns[closestIndex]
-    }
-
-    else if(data ==="CurrentTime")
-    {
-        return(parseInt(moment(new Date()).format("HHmm")))
+      
+        return(currentTime)
     }
 
     else
@@ -356,7 +339,7 @@ function getResolution()
 {
     var width = parseInt($("#width").val());
     var height= parseInt($("#height").val());
-    if($("#selectCustom").val()==="LED" || $("#selectCustom").val()==="Full")
+    if($("#selectCustom").val()==="LED")
     {
         width = 0
         height = getSequenceArray()[0][0].height
@@ -389,14 +372,7 @@ function getResolution()
        }
     }
 
-    if($("#selectCustom").val()==="MediaCorp")
-    {
-        width = 1920
-        height = 1080
-        return [width, height]
-    }
-
-    if($("#selectCustom").val()=="IMAG")
+    else if($("#selectCustom").val()=="IMAG")
     {
         width = resolution[$("#selectResolutionProj").val()].width
         height = resolution[$("#selectResolutionProj").val()].height
@@ -406,15 +382,7 @@ function getResolution()
     return [width, height]
 }
 
-//For custom resolution
-function getCustomResolution()
-{
-    if($("#width").val().length !== 0 && $("#height").val().length !== 0)
-    {
-        $("#filenameChooser").show()
-        checkFileName();
-    }
-}
+
 
 //Error checking
 function checkValidityOfConfiguration(array, JsonArray)
@@ -505,24 +473,6 @@ function nextPage()
             })
         }
     }
-    
-    if($('#selectCompany').val() === 'hexagon')
-    {
-        if (parent2.children.length == parent2.querySelectorAll(".checked").length) 
-        {
-            $('#page1').hide();
-            $('#page2').fadeIn();
-        }
-        else
-        {
-            Swal.fire
-            ({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please make sure you\'ve checked all checklist items!',
-            })
-        }
-    }
 }
 
 //what option?
@@ -540,17 +490,7 @@ function refresh()
 }
 
 //Making concatinated file name
-function generateCopyText()
-{
-    $("#copyText").html(    
-        getOption()+"_"+
-        $('#filename').val().toUpperCase()+"_"+
-        getResolution()[0]+"x"+
-        getResolution()[1]+
-        '_v'+
-        getNearestTimeStamp()
-    )
-}
+
 
 
 //Reset copytext to allow new text to be generated and copied

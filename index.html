@@ -97,8 +97,7 @@
                 <p class="light" style="margin: 0">Choose Load-In Time</p>
                 <select onchange="checkLoadInSelection()" id="selectLoadIn" class="selectForm">
                      <option value="NIL">Choose an option</option>
-                     <option value="CurrentTime">Current Time</option>
-                     <option value="Auto">Automatically Choose The Nearest Load-In Time</option>
+                     <option value="CurrentTime">Current Time - Beta</option>
                      <option value="1000">1000hrs</option>
                      <option value="1200">1200hrs</option>
                      <option value="1400">1400hrs</option>
@@ -107,6 +106,7 @@
                      <option value="1900">1900hrs</option>
                  </select>
                 
+                 <input onchange="checkFileName()" id="dateSelect" type=date min=2014-09-08> - Select Date
                  <br><br>
 
                 <!------------------------------
@@ -198,7 +198,7 @@
                         </optgroup>
                         
                         <optgroup label="2. SEGMENT: TDD1 (TDD1)">
-                            <option value="TDD1_AH2nL2">AH2&L2</option>
+                            <option value="TDD1_AHnL2">AH&L2</option>
                             <option value="TDD1_ARV">ARV</option>
                             <option value="TDD1_HIMARS">HIMARS</option>
                             <option value="TDD1_HUNTER">HUNTER</option>
@@ -241,6 +241,7 @@
                             <option value="CHPT5_ROLLINGCREDITS">ROLLING CREDITS</option>
                             <option value="CHPT5_WAVYFLAG">WAVY FLAG</option>
                             <option value="CHPT5_NORMALFLAG">NORMAL FLAG</option>
+                            <option value="CHPT5_HOLDINGLOGO">HOLDING LOGO</option>
                         </optgroup>
 
                     </select>
