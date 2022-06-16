@@ -276,19 +276,14 @@ function checkFileName()
         resetCopyText();
         $("#filename").hide()
 
-        if($("#selectFileName").val()!=="NIL" && $("#selectCustom").val()!=="IMAG")
-        {
-            $("#copyText").html(
-                getOption()+"_"+
-                $('#selectFileName').val()+"_"+
-                getResolution()[0]+"x"+
-                getResolution()[1]+
-                '_v'+
-                customTimeStamp()            )
-        }
-
         
-    
+        $("#copyText").html(
+            getOption()+"_"+
+            $('#selectFileName').val()+"_"+
+            getResolution()[0]+"x"+
+            getResolution()[1]+
+            '_v'+
+            customTimeStamp())
     }
 }
 
