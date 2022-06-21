@@ -97,14 +97,15 @@
                 <p class="light" style="margin: 0">Choose Load-In Time</p>
                 <select onchange="checkLoadInSelection()" id="selectLoadIn" class="selectForm">
                      <option value="NIL">Choose an option</option>
-                     <option value="CurrentTime">Current Time - Beta</option>
+                     <option value="0900">0900hrs</option>
                      <option value="1000">1000hrs</option>
                      <option value="1100">1100hrs</option>
-                     <option value="1200">1200hrs</option>
+                     <option value="1300">1300hrs</option>
                      <option value="1400">1400hrs</option>
                      <option value="1500">1500hrs</option>
+                     <option value="1600">1600hrs</option>
                      <option value="1700">1700hrs</option>
-                     <option value="1900">1900hrs</option>
+                     <option value="2100">2100hrs</option>
                  </select>
                 
                  <input onchange="checkFileName()" id="dateSelect" type=date min=2014-09-08> - Select Date
@@ -196,6 +197,14 @@
                             <option value="PP_KYNDPSTITLE">KYNDPS TITLE</option>
                             <option value="PP_KYNDPSGOODTRY">KYNDPS GOOD TRY</option>
                             <option value="PP_KYNDPSWELLDONE">KYNDPS WELL DONE</option>
+                            <option value="PP_PP1BLYRICS">PP1B LYRICS</option>
+                            <option value="PP_PP2LYRICS">PP2 LYRICS</option>
+                            <option value="PP_PP3LYRICS">PP3 LYRICS</option>
+                            <option value="PP_PP5LYRICS">PP5 LYRICS</option>
+                            <option value="PP_PP8LYRICS">PP8 LYRICS</option>
+                            <option value="PP_OVERSEASSG">OVERSEAS SG</option>
+                            <option value="PP_OVERSEASSGSUBS">OVERSEAS SG SUBS</option>
+                            
                         </optgroup>
                         
                         <optgroup label="2. SEGMENT: TDD1 (TDD1)">
@@ -215,25 +224,45 @@
                             <option value="PnC_HOLDINGLOGO">HOLDING LOGO</option>
                             <option value="PnC_WAVYFLAG">WAVY FLAG</option>
                             <option value="PnC_NORMALFLAG">NORMAL FLAG</option>
+                            <option value="PnC_VIRTUALTATTOO">VIRTUAL TATTOO</option>
+                            <option value="PnC_PLEDGELYRICS">PLEDGE LYRICS</option>
+                            <option value="PnC_NATIONALANTHEMLYRICS">NATIONAL ANTHEM LYRICS</option>
                         </optgroup>
 
                         <optgroup label="4. SEGMENT: TDD2 (TDD2)">
                             <option value="TDD2_ADVISORY">ADVISORY</option>
                         </optgroup>
 
+                        <optgroup label="5. SEGMENT: CHAPTER 1 (CHPT1)">
+                            <option value="CHPT1_TITLESTART">TITLE START</option>
+                            <option value="CHPT1_TITLEFINISH">TITLE FINISH</option>
+                        </optgroup>
+
                         <optgroup label="6. SEGMENT: CHAPTER 2 (CHPT2)">
                             <option value="CHPT2_SHOWFILM1">SHOWFILM 1</option>
                             <option value="CHPT2_SHOWFILM1SUBS">SHOWFILM 1 SUBTITLES</option>
+                            <option value="CHPT2_TITLESTART">TITLE START</option>
+                            <option value="CHPT2_TITLEFINISH">TITLE FINISH</option>
                         </optgroup>
 
                         <optgroup label="7. SEGMENT: CHAPTER 3 (CHPT3)">
                             <option value="CHPT3_SHOWFILM2">SHOWFILM 2</option>
                             <option value="CHPT3_SHOWFILM2SUBS">SHOWFILM 2 SUBTITLES</option>
+                            <option value="CHPT3_TITLESTART">TITLE START</option>
+                            <option value="CHPT3_FAMILYTRIBUTE">FAMILY TRIBUTE</option>
+                            <option value="CHPT3_1PMQUOTE">1PM QUOTE</option>
+                            <option value="CHPT3_2SHAKESPEAREQUOTE">SHAKESPEARE QUOTE</option>
+                            <option value="CHPT3_3ZUBIRSAIDQUOTE">ZUBIR SAID QUOTE</option>
+                            <option value="CHPT3_4AJOYCHAKRABORTYQUOTE">JOY CHAKRABORTY QUOTE</option>
+                            <option value="CHPT3_5LAOZIQUOTE">LAO ZI QUOTE</option>
                         </optgroup>
 
                         <optgroup label="8. SEGMENT: CHAPTER 4 (CHPT4)">
                             <option value="CHPT4_SHOWFILM3">SHOWFILM 3 </option>
                             <option value="CHPT4_SHOWFILM3SUBS">SHOWFILM 3 SUBTITLES</option>
+                            <option value="CHPT4_TITLESTART">TITLE START</option>
+                            <option value="CHPT4_CHPT4LYRICS">CHPT 4 LYRICS</option>
+                            
                         </optgroup>
 
                         <optgroup label="9. SEGMENT: CHAPTER 5 (CHPT5)">
@@ -243,6 +272,14 @@
                             <option value="CHPT5_WAVYFLAG">WAVY FLAG</option>
                             <option value="CHPT5_NORMALFLAG">NORMAL FLAG</option>
                             <option value="CHPT5_HOLDINGLOGO">HOLDING LOGO</option>
+                            <option value="CHPT5_TITLESTART">TITLE START</option>
+                            <option value="CHPT5_CHPT5LYRICS">CHPT 5 LYRICS</option>
+                            <option value="CHPT5_NATIONALANTHEMLYRICS">NATIONAL ANTHEM LYRICS</option>
+                            <option value="CHPT5_PLEDGELYRICS">PLEDGE LYRICS</option>
+                        </optgroup>
+
+                        <optgroup label="10. OTHERS">
+                            <option value="CHPT2n3_CHPT2n3LYRICS">CHPT 2&3 LYRICS</option>
                         </optgroup>
 
                     </select>
